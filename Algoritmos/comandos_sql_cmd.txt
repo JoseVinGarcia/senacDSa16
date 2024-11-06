@@ -1,0 +1,31 @@
+
+# INICIAR NO CMD:
+mysql -u root -p
+
+# CRIAR BANCO DE DADOS:
+CREATE DATABASE bd_loja;
+USE bd_loja;
+
+# CRIANDO TABELA:
+CREATE TABLE tb_produtos(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    NomeProduto VARCHAR(255),
+    Categoria VARCHAR(255),
+    QuantidadeEstoque INT,
+    Valor DECIMAL
+);
+
+# CARREGANDO ARQUIVO CSV
+LOAD DATA INFILE "(CAminho do arquivo com barra dupla \\ e nome do arquivo com formato)"
+INTO TABLE tb_produtos
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(NomeProduto, Categoria, QuantidadeEstoque, Valor);
+
+# O DE CIMA VAI DAR ERRO, ENTAO VAMOS PRECISAR FAZER ESSE COMANDO
+
+SHOW VARIABLES LIKE 'secure_file_priv';
+
+# HABILITAR A PERMISSÃO PARA ARQUIVOS EM LOCAIS PROTEGIDOS
+SET GLOBAL local_infile=1;
