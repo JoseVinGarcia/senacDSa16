@@ -12,7 +12,7 @@ database = "bd_loja"
 
 engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}/{database}")
 
-# leitura dos dados da tablea de produtos
+# leitura dos dados da tabela de produtos
 df_estoque = pd.read_sql("tb_produtos",engine)
 
 # printando somente os 5 primeiros
